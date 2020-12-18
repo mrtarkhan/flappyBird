@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flppy Bird</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="start">
+      <div id="start-container">
+        <button onclick="start()">Start Game</button>
+        <p id="start-highscore">Your Highest Score:</p>
+      </div>
+    </div>
+    <audio id="fail-sound" src="./sound/fail.wav"></audio>
+    <audio id="jump-sound" src="./sound/jump.wav"></audio>
+    <audio id="success-sound" src="./sound/success.wav" preload></audio>
+    <audio
+      id="playsound-background"
+      src="./sound/jingle-birds1.mp3"
+      preload
+    ></audio>
+
+    <div id="playGround"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

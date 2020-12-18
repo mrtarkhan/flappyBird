@@ -1,0 +1,198 @@
+* {
+  user-select: none;
+}
+
+#start {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+}
+#start-highscore {
+  font-weight: bolder;
+}
+#start #start-container {
+  /* background: white; */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* font-size: 25pt; */
+  /* box-shadow: 5px 3px 8px 8px #00000024; */
+  padding: 10px 80px;
+}
+
+#start #start-container button {
+  background-color: green;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14pt;
+  margin: 10pt 0;
+}
+
+.pipeElement {
+  width: 75px;
+  background: #00d500;
+  position: absolute;
+  display: flex;
+  height: 100%;
+}
+.pipeElement::after {
+  content: "";
+  width: 15px;
+  height: 100%;
+  background: #ffffff35;
+  position: absolute;
+  right: 10px;
+}
+
+.pipeElement-hole {
+  z-index: 10;
+  background: #37cdff;
+  width: 95px;
+  height: 200px;
+  position: absolute;
+  left: -10px;
+}
+
+.pipeElement-hole::after {
+  content: "";
+  width: 95px;
+  height: 30px;
+  background: #009600;
+  position: absolute;
+  top: 0;
+}
+
+.pipeElement-hole::before {
+  content: "";
+  width: 95px;
+  height: 30px;
+  background: #009600;
+  position: absolute;
+  bottom: -30px;
+}
+
+/* .pipeElement::before {
+  content: "";
+  width: 75px;
+  height: 100%;
+  background: green;
+  display: flex;
+  align-self: flex-start;
+} */
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+#playGround {
+  direction: rtl;
+  width: 100vw;
+  height: 100vh;
+  background: #37cdff;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+#pipesContainer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+  direction: rtl;
+  height: 100%;
+  width: 100%;
+
+  /* transition: 0.4s; */
+}
+
+#bird {
+  position: fixed;
+  width: 50px;
+  height: 45px;
+  left: 100px;
+  transition: 0.1s;
+  /* border: 1px solid red; */
+  background: url(./images/bird.gif);
+  background-size: 90px;
+  z-index: 11;
+  background-position: center;
+}
+.going-down {
+  transform: rotate(-30deg);
+}
+.going-up {
+  transform: rotate(30deg);
+}
+
+#scoreContainer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00000060;
+}
+
+#socoreCard {
+  /* width: 200px;
+  height: 150px; */
+  background: white;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* font-size: 25pt; */
+  box-shadow: 5px 3px 8px 8px #00000024;
+  padding: 10px 80px;
+}
+
+#socoreCard h4 {
+  font-size: 20pt;
+  margin: 10pt 0;
+}
+
+#socoreCard h5 {
+  margin: 0;
+  margin: 10pt 0;
+
+  font-size: 16pt;
+}
+
+#socoreCard input {
+  background-color: green;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14pt;
+  margin: 10pt 0;
+}
+
+#fixedScoreBanner {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  background: #ffffff69;
+  font-size: 15pt;
+  padding: 15px;
+}
