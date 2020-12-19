@@ -30,6 +30,8 @@ class ScoreBanner {
     this.score = score;
     const scoreContainer = document.createElement("div");
     scoreContainer.id = "scoreContainer";
+    scoreContainer.tabIndex = "1";
+    scoreContainer.onkeydown = action;
     const scoreCard = document.createElement("div");
     scoreCard.id = "socoreCard";
     scoreCard.innerHTML =
@@ -67,6 +69,7 @@ class GameManager {
     this.pipesContainer = document.createElement("div");
     this.pipesContainer.id = "pipesContainer";
     this.playGround = document.getElementById("playGround");
+    this.playGround.focus();
     this.playGround.append(this.pipesContainer);
     this.containerPosition = 0;
     this.pipesMaxDistance = 90;
@@ -86,22 +89,27 @@ class GameManager {
     this.successSound = document.getElementById("success-sound");
   }
   startGame() {
+    this.playGround.focus();
     this.playGroundSound.play();
-    this.playGround.onclick = () => {
-      this.jumpSound.play();
-      clearTimeout(this.timeoutBirdUp);
-      this.moveingUp = true;
-      this.timeoutBirdUp = setTimeout(() => {
-        this.moveingUp = false;
-      }, 300);
-    };
+    this.playGround.onclick = this.jump;
+    this.playGround.onkeydown = this.jump;
     this.createBird();
     this.interval = setInterval(() => {
       this.update();
     }, 33);
   }
 
+  jump = () => {
+    this.jumpSound.play();
+    clearTimeout(this.timeoutBirdUp);
+    this.moveingUp = true;
+    this.timeoutBirdUp = setTimeout(() => {
+      this.moveingUp = false;
+    }, 300);
+  };
+
   pauseGame() {
+    this.playGround.blur();
     this.failSound.play();
     this.playGroundSound.pause();
     clearInterval(this.interval);
@@ -207,6 +215,7 @@ class GameManager {
       this.startAgain
     );
     this.playGround.append(this.scoreBanner);
+    document.getElementById("scoreContainer").focus();
   }
 
   removeBanner() {
@@ -222,8 +231,10 @@ const start = () => {
 
 // gameManagert.startGame();
 
+const highScore = JSON.parse(localStorage.getItem("higherScore"));
+
 document.getElementById("start-highscore").innerHTML =
-  "Your HighScore is: " + window.localStorage.getItem("higherScore");
+  "Your HighScore is: " + highScore;
 
 function randomIntFromInterval(min, max) {
   // min and max included
